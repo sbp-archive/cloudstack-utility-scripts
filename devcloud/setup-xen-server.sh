@@ -7,12 +7,12 @@ printUsage() {
 	echo "		--extend-primary-storage DISK	extends the available size in primary storage"
 	echo "						by attaching DISK to the SR"
 	echo "		--mysql				installs and configures mysql-server"
-	echo "		--secondary-storage-nfs  PATH	configures NFS export for secondary storage under PATH"		
+	echo "		--secondary-storage-nfs  DISK	configures NFS export for secondary storage under PATH"		
 }
 
 extendPrimaryPartition() {
 	echo "Add $PRIMARY_STORAGE_DISK to primary storage SR"
-	$PRIMARY_STORAGE_DISK=$1
+	PRIMARY_STORAGE_DISK=$1
 
 	fdisk $PRIMARY_STORAGE_DISK > /dev/null << EOF
 n
